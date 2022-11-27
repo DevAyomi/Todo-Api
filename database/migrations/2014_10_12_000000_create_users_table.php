@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('userType')->default('client');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_adress')->nullable();
+            $table->string('profile_picture')->default('https://www.pngmart.com/files/22/User-Avatar-Profile-PNG-Isolated-Transparent-Picture.png');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -27,8 +27,8 @@ class CreateClientRequest extends FormRequest
            'email' => 'required|email|string|unique:users,email',
            'password' => 'required|min:6|max:15',
            'name' => 'required|string|max:60',
-           'companyName' => 'required|string|unique:users,company_name',
-           'companyAddress' => 'required|string',
+           'company_name' => 'required|string|unique:users,company_name',
+           'company_address' => 'required|string',
         ];
     }
 }

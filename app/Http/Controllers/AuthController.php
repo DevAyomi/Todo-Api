@@ -54,7 +54,7 @@ class AuthController extends Controller
     {
         $formData = $request->validated();
         if(!Hash::check($request->old_password, auth()->user()->password)){
-          return $this->apiResponse->failure("Old password os not correct"); 
+          return $this->apiResponse->failure("Old password is not correct"); 
         }
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->password)

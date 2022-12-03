@@ -22,6 +22,8 @@ class UserFactory extends Factory
             'email' => "ebenezerug@gmail.com",
             'email_verified_at' => now(),
             'userType' => 'Admin',
+            'company_name' => 'LabelDots',
+            'company_adress' => 'Lagos, Highland',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'profile_picture' => 'https://www.pngmart.com/files/22/User-Avatar-Profile-PNG-Isolated-Transparent-Picture.png',
             'remember_token' => Str::random(10),

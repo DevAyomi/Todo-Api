@@ -34,8 +34,8 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'company_name' => $request->companyName,
-            'company_adress' => $request->companyAddress,
+            'company_name' => $request->company_name,
+            'company_adress' => $request->company_address,
             'password' => Hash::make($request->password)
         ]);
   
@@ -54,7 +54,7 @@ class AuthController extends Controller
     {
         $formData = $request->validated();
         if(!Hash::check($request->old_password, auth()->user()->password)){
-          return $this->apiResponse->failure("Old password os not correct"); 
+          return $this->apiResponse->failure("Old password is not correct"); 
         }
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->password)

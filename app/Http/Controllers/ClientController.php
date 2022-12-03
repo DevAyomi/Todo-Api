@@ -8,7 +8,12 @@ use App\Http\Requests\EditClientRequest;
 use Illuminate\Validation\Rule;
 
 class ClientController extends Controller
-{
+{   
+    public function clients()
+    {
+        $allClient = User::where('userType', 'Client')->get();
+        return $this->apiResponse->successWithData($allClient, "List of all Clients");
+    }
     public function allClient()
     {
         $allClient = User::where('userType', 'Client')->latest()->paginate(4);

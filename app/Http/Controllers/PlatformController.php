@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreatePlatformRequest;
 use App\Http\Requests\EditPlatformRequest;
 use App\Models\Platform;
+use Illuminate\Validation\Rule;
 
 class PlatformController extends Controller
-{
+{   
+    public function platforms()
+    {
+        $platforms = Platform::get('name');
+        return $this->apiResponse->successWithData($platforms, "All Platforms Retrieved");
+    }
+    public function allPlatforms()
+    {
+        $platforms = Platform::latest()->paginate(4);
+        return $this->apiResponse->successWithData($platforms, "All Platforms Retrieved");
+    }
     public function createPlatform(CreatePlatformRequest $request)
     {
         $formData = $request->validated();

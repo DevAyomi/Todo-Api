@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePlatformRequest extends FormRequest
+class UpdateCampaignRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class CreatePlatformRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:platforms,name'
+            'user_id' => ['required', 'numeric', 'exists:users,id'],
+            'details' => ['required', 'array']
         ];
     }
 }

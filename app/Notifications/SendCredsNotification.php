@@ -50,7 +50,7 @@ class SendCredsNotification extends Notification
                     ->greeting('Dear '.$this->name.',')
                     ->line('We wish to inform you that an account has been created for you by LabelDots')
                     ->line('Login with email: '.$this->email.' '. 'Password: ' .$this->password)
-                    ->action('Access your Account here', url('https://github.com/DevAyomi'))
+                    ->action('Access your Account here', url('https://labeldots.com.ng'))
                     ->line('Thank you for using LabelDots!');
     }
 

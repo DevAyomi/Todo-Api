@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Models\User;
+use App\Models\Campaign;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendCredsNotification;
@@ -67,6 +68,12 @@ class AuthController extends Controller
     {
         $me = Auth::user();
         return $this->apiResponse->successWithData($me, "User Retrieved");
+    }
+
+    public function myCampaigns() 
+    {
+        $myCampaigns = Campaign::with('user')->where('user_id', Auth::id())->get();
+        return $this->apiResponse->successWithData($myCampaigns, "My campaigns retrieved");
     }
 
 }

@@ -48,14 +48,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/campaigns-no', [DashboardController::class, 'allCampaignsNo']);
         Route::post('/create-campaign', [CampaignController::class, 'createCampaign']);
         Route::get('/all-campaigns', [CampaignController::class, 'allCampaigns']);
-        Route::get('/show-campaign/{id}', [CampaignController::class, 'showCampaign']);
         Route::put('/edit-campaign/{id}', [CampaignController::class, 'updateCampaign']);
         Route::delete('/delete-campaign/{id}', [CampaignController::class, 'deleteCampaign']);
     });
     Route::post('/upload-image', [CloudinaryController::class, 'uploadImage']);
     Route::post('/change-password', [AuthController::class, 'changePassword']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::get('/my-campaigns', [AuthController::class, 'myCampaigns']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/show-campaign/{id}', [CampaignController::class, 'showCampaign']);
 });
 
 //Route::get('todo-list', TodoListController::class, 'index')->name('todo-list.index');

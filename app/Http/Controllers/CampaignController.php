@@ -15,16 +15,15 @@ class CampaignController extends Controller
         $campaign = Campaign::create($formData);
         return $this->apiResponse->created($campaign, "Campaign created successfully");
     }
-
     public function allCampaigns()
     {
-        $allCampaigns = Campaign::latest()->paginate(4);
+        $allCampaigns = Campaign::with('user')->latest()->paginate(4);
         return $this->apiResponse->successWithData($allCampaigns, "All campaigns retrieved");
     }
 
     public function showCampaign($id)
     {
-        $campaign = Campaign::where('id', $id)->first();
+        $campaign = Campaign::with('user')->where('id', $id)->first();
         return $this->apiResponse->successWithData($campaign, "Campaign retrieved");
     }
 

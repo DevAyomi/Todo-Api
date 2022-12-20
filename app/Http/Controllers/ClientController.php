@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Campaign;
 use App\Http\Requests\EditClientRequest;
 use Illuminate\Validation\Rule;
 
@@ -45,6 +46,12 @@ class ClientController extends Controller
     {
         $clientId = User::where('id', $id)->delete();
         return $this->apiResponse->success("Client deleted successfully");
+    }
+
+    public function showClientCampaign($id)
+    {
+        $campaign = Campaign::where('id', $id)->first();
+        return $this->apiResponse->successWithData($campaign, "Campaign Retrieved Seccessfully");
     }
 
 }
